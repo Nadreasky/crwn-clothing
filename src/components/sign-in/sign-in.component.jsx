@@ -25,6 +25,9 @@ class SignIn extends React.Component {
        await auth.signInWithEmailAndPassword(email, password);
        this.setState({email: '', password: ''});
      } catch (error) {
+       if (error.code === 'auth/user-not-found') {
+         alert("This user has not been existed!");
+       }
        console.error(error);
      }
    }
